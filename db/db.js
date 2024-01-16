@@ -1,10 +1,10 @@
 const mysql = require('mysql2');
 const config = require('./db_config.json');
 
-const connection = mysql.createConnection(config);
+const pool = mysql.createPool(config);
 
-connection.query(
-  'SELECT * FROM webtoons',
+pool.execute(
+  `SELECT * FROM ??`,
   function (err, result, fields) {
     console.log(result);
   }

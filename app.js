@@ -4,12 +4,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const webtoonsRouter = require('./routes/webtoonsRouter');
-
 const app = express();
 
-const _loggerFormat = decodeURIComponent(':date :username %1b[1m:method%1b[0m %1b[33m:url%1b[0m :status :res[content-length] bytes :response-time ms');
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -17,8 +16,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/api', webtoonsRouter);
+app.get('/', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
+});
+
+app.get('/api/webtoons', (req, res) => {
+  res.send('test');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
