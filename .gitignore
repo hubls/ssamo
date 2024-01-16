@@ -11,3 +11,5 @@
 /vueapp/node_modules/
 # 빌드된 파일 무시
 /public/
+# db 정보
+/db/db_config.json
