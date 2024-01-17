@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const boardController = require('./controllers/boardController');
 
 const app = express();
 
@@ -20,9 +21,10 @@ app.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-app.get('/api/webtoons', (req, res) => {
-  res.send('test');
-});
+app.get(
+  ['/api/:boardname', '/:boardname/list'],
+  boardController.getData
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
