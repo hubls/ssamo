@@ -29,7 +29,7 @@ export default {
         { title: '커뮤니티', path: '/community', icon: 'person-circle' },
         { title: '포털', path: '/portal', icon: 'globe' },
         { title: '뉴스', path: '/news', icon: 'newspaper'},
-        { title: '음악', path: '/music', icon: 'headphones'}
+        { title: '쇼핑', path: '/shopping', icon: 'shop'}
       ]
     }
   }

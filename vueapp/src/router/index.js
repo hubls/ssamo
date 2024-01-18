@@ -5,7 +5,7 @@ import Webtoons from "../components/views/Webtoons";
 import Community from "../components/views/Community.vue";
 import Portal from "../components/views/Portal.vue";
 import News from "../components/views/News.vue";
-import Music from "../components/views/Music.vue";
+import Shopping from "../components/views/Shopping.vue";
 
 Vue.use(VueRouter)
 
@@ -38,9 +38,9 @@ export default new VueRouter({
       component: News
     },
     {
-      path: '/music',
-      name: 'Music',
-      component: Music
+      path: '/shopping',
+      name: 'Shopping',
+      component: Shopping
     }
   ]
 })
