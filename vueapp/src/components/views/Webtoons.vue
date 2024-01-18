@@ -32,7 +32,7 @@ export default {
         const response = await axios.get("/api/webtoons");
         this.webtoonsData = response.data; // API에서 받아온 데이터를 설정
       } catch (error) {
-        console.error("Error fetching webtoons data:", error);
+        console.error("Error getting webtoons data: ", error);
       }
     }
   }

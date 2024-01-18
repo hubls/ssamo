@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>뉴스 모음 페이지</h1>
+    <h1>쇼핑 모음 페이지</h1>
   </div>
 </template>
 
@@ -15,21 +15,21 @@ export default {
 
   data() {
     return {
-      newsData: []
+      shoppingData: []
     }
   },
 
   mounted() {
-    this.getNewsData();
+    this.getShoppingData();
   },
 
   methods: {
-    async getNewsData() {
+    async getShoppingData() {
       try {
         const response = await axios.get("/api/shopping");
-        this.newsData = response.data; // API에서 받아온 데이터를 설정
+        this.shoppingData = response.data; // API에서 받아온 데이터를 설정
       } catch (error) {
-        console.error("Error getting news data: ", error);
+        console.error("Error getting shopping data: ", error);
       }
     }
   }
