@@ -7,6 +7,22 @@ class BoardService {
 
     return result;
   }
+
+  async insertData(boardName, imageName, siteInformation) {
+    const name = siteInformation.name;
+    const url = siteInformation.url;
+    const visitorCount = siteInformation.visitorCount;
+
+    const sql = `INSERT INTO ${boardName} (name, url, visitorCount, imagePath , imageName) VALUES (?, ?, ?, ?, ?)`;
+
+    try {
+      await MySQLRepository.executeQuery(sql, [name, url, visitorCount, boardName, imageName]);
+
+      return JSON.stringify({ success: true })
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = BoardService;

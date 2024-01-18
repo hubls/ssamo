@@ -23,8 +23,8 @@ app.get(
 );
 
 app.post(
-  ['/api/:boardname', '/:boardname/write'],
-  boardController.insertData
+  ['/api/:boardname', '/:boardname/upload'],
+  boardController.uploadData
 );
 
 // ============================================================================
