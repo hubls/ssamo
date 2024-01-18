@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1>웹툰 모음 페이지</h1>
+    <b-button @click="openModal">모달 열기</b-button>
+      <modal ref="modal">
+        <h2>안녕하세요.</h2>
+        <p>반갑습니다.</p>
+      </modal>
     <div>
       <Board :table-data = "webtoonsData" />
     </div>
@@ -9,11 +14,13 @@
 
 <script>
 import Board from "../layout/Board.vue";
+import Modal from "../layout/Upload.vue";
 import axios from "axios";
 
 export default {
   components: {
-    Board
+    Board,
+    Modal
   },
 
   data() {
@@ -27,6 +34,10 @@ export default {
   },
 
   methods: {
+    openModal() {
+      this.$refs.modal.showModal = true;
+    },
+
     async getWebtoonsData() {
       try {
         const response = await axios.get("/api/webtoons");
