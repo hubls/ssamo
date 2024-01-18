@@ -11,7 +11,6 @@ class BoardController {
     }
 
     const result = await boardService.getAllData(boardName);
-
     return res.send(result);
   }
 }
