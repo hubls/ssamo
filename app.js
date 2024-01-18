@@ -17,29 +17,43 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
-});
-
 app.get(
   ['/api/:boardname', '/:boardname/list'],
   boardController.getData
 );
 
-// catch 404 and forward to error handler
+app.post(
+  ['/api/:boardname', '/:boardname/write'],
+  boardController.insertData
+);
+
+// ============================================================================
+// VUE APP
+// ============================================================================
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // 개발 환경에서만 에러 메시지를 제공합니다.
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // 에러를 콘솔에 기록합니다.
+  console.error(err);
+
+  // 에러 페이지를 렌더링합니다.
   res.status(err.status || 500);
-  res.render('error');
+
+  // 요청이 API 요청인지 확인합니다.
+  if (req.originalUrl.startsWith('/api/')) {
+    // 만약 API 요청이면 JSON 형식으로 응답합니다.
+    res.json({ error: err.message || '문제가 발생했습니다.' });
+  } else {
+    // 일반적인 요청이면 에러 페이지를 렌더링합니다.
+    res.render('error');
+  }
 });
 
 // 서버를 시작하는 코드 추가
@@ -47,5 +61,3 @@ const port = process.env.PORT || 9694;
 app.listen(port, function() {
   console.log('Server is running on port ' + port);
 });
-
-module.exports = app;
