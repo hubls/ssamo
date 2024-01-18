@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-4 custom-cell" style="border: 1px solid;" @click="redirectUrl(cellData.url)">
     <div class="image-container">
-      <img :src="require(`@/assets/webtoons/${cellData.imageName}`)" alt="이미지" class="cell-image" />
+      <img :src="require(`@/assets/${cellData.imagePath}/${cellData.imageName}`)" alt="이미지" class="cell-image" />
     </div>
     <div class="platform-name">
       {{ cellData.name }}
