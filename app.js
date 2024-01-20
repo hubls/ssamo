@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const boardController = require('./controllers/boardController');
+const imageController = require('./controllers/imageController');
 
 const app = express();
 
@@ -25,6 +26,11 @@ app.get(
 app.post(
   ['/api/:boardname', '/:boardname/upload'],
   boardController.uploadData
+);
+
+app.get(
+  ['/api/image/:boardName/:imageName', '/image/:boardName/:imageName'],
+  imageController.getBoardImage
 );
 
 // ============================================================================
