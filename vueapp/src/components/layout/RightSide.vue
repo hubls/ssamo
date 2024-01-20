@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12 image-container" v-for="image in imageData" :key="image" @click="redirectUrl(image.url)">
-      <img :src="require(`@/assets/leftside/${image.path}`)" alt="이미지" class="full-width" />
+      <img :src="`/api/image/${image.imagePath}/${image.imageName}`" alt="이미지" class="full-width" />
     </div>
   </div>
 </template>
@@ -11,14 +11,14 @@ export default {
   data() {
     return {
       imageData: [
-        {name: '네이버', path: 'naver.png', url: 'https://www.naver.com'},
-        {name: '구글', path: 'google.png', url: 'https://www.google.co.kr'},
-        {name: '다음', path: 'daum.png', url: 'https://www.daum.net'},
-        {name: '네이트', path: 'nate.jpg', url: 'https://www.nate.com'},
-        {name: '줌', path: 'zum.jpg', url: 'https://zum.com'},
-        {name: '빙', path: 'bing.jpg', url: 'https://www.bing.com'},
-        {name: '바이두', path: 'baidu.png', url: 'https://www.baidu.com'},
-        {name: '소우거우', path: 'sogou.png', url: 'https://www.sogou.com'}
+        { name: '네이버', imageName: 'naver.png', imagePath: 'leftside', url: 'https://www.naver.com' },
+        { name: '구글', imageName: 'google.png', imagePath: 'leftside', url: 'https://www.google.co.kr' },
+        { name: '다음', imageName: 'daum.png', imagePath: 'leftside', url: 'https://www.daum.net' },
+        { name: '네이트', imageName: 'nate.jpg', imagePath: 'leftside', url: 'https://www.nate.com' },
+        { name: '줌', imageName: 'zum.jpg', imagePath: 'leftside', url: 'https://zum.com' },
+        { name: '빙', imageName: 'bing.jpg', imagePath: 'leftside', url: 'https://www.bing.com' },
+        { name: '바이두', imageName: 'baidu.png', imagePath: 'leftside', url: 'https://www.baidu.com' },
+        { name: '소우거우', imageName: 'sogou.png', imagePath: 'leftside', url: 'https://www.sogou.com' }
       ]
     }
   },
