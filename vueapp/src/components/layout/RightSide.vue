@@ -1,31 +1,37 @@
 <template>
   <div class="row">
-    <div class="col-12 image-container" v-for="image in imageData" :key="image" @click="redirectUrl(image.url)">
-      <img :src="`/api/image/${image.imagePath}/${image.imageName}`" alt="이미지" class="full-width" />
+    <div class="col-12 image-container" v-for="data in rightSideData" :key="data" @click="redirectUrl(data.url)">
+      <img :src="`/api/image/${data.imagePath}/${data.imageName}`" alt="이미지" class="full-width" />
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      imageData: [
-        { name: '네이버', imageName: 'naver.png', imagePath: 'leftside', url: 'https://www.naver.com' },
-        { name: '구글', imageName: 'google.png', imagePath: 'leftside', url: 'https://www.google.co.kr' },
-        { name: '다음', imageName: 'daum.png', imagePath: 'leftside', url: 'https://www.daum.net' },
-        { name: '네이트', imageName: 'nate.jpg', imagePath: 'leftside', url: 'https://www.nate.com' },
-        { name: '줌', imageName: 'zum.jpg', imagePath: 'leftside', url: 'https://zum.com' },
-        { name: '빙', imageName: 'bing.jpg', imagePath: 'leftside', url: 'https://www.bing.com' },
-        { name: '바이두', imageName: 'baidu.png', imagePath: 'leftside', url: 'https://www.baidu.com' },
-        { name: '소우거우', imageName: 'sogou.png', imagePath: 'leftside', url: 'https://www.sogou.com' }
-      ]
+      rightSideData: []
     }
+  },
+
+  mounted() {
+    this.getRightSideData();
   },
 
   methods: {
     redirectUrl(url) {
       window.open(url, '_blank');
+    },
+
+    async getRightSideData() {
+      try {
+        const response = await axios.get("/api/side/rightside");
+        this.rightSideData = response.data; // API에서 받아온 데이터를 설정
+      } catch (error) {
+        console.error("Error getting rightSide data: ", error);
+      }
     }
   }
 }

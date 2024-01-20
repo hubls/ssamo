@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const boardController = require('./controllers/boardController');
+const sideController = require('./controllers/sideController');
 const imageController = require('./controllers/imageController');
 
 const app = express();
@@ -17,6 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get(
+  ['/api/side/:sidename', '/side/:sidename/list'],
+  sideController.getData
+)
 
 app.get(
   ['/api/board/:boardname', '/board/:boardname/list'],
