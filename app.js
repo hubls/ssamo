@@ -19,12 +19,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get(
-  ['/api/:boardname', '/:boardname/list'],
+  ['/api/board/:boardname', '/board/:boardname/list'],
   boardController.getData
 );
 
 app.post(
-  ['/api/:boardname', '/:boardname/upload'],
+  ['/api/board/:boardname', '/api/board/:boardname'],
   boardController.uploadData
 );
 
