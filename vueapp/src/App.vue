@@ -3,14 +3,14 @@
     <Header />
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="col-md-2" style="background-color: orange; border: 1px solid; height: 800px">
+        <div class="col-md-2" style="border: 1px solid; height: 800px">
           <left-side></left-side>
         </div>
         <div class="col-md-8">
           <div style="margin-top: 20px;"></div>
           <router-view></router-view>
         </div>
-        <div class="col-md-2" style="background-color: blue; border: 1px solid; height: 800px">
+        <div class="col-md-2" style="border: 1px solid; height: 800px">
           <right-side></right-side>
         </div>
       </div>
