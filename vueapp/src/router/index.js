@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Home from "../components/views/Home";
 import Webtoons from "../components/views/Webtoons";
 import Community from "../components/views/Community.vue";
-import Portal from "../components/views/Portal.vue";
+import Game from "../components/views/Game.vue";
 import News from "../components/views/News.vue";
 import Shopping from "../components/views/Shopping.vue";
 
@@ -28,9 +28,9 @@ export default new VueRouter({
       component: Community
     },
     {
-      path: '/portal',
-      name: 'Portal',
-      component: Portal
+      path: '/game',
+      name: 'Game',
+      component: Game
     },
     {
       path: '/news',

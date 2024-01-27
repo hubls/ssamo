@@ -27,7 +27,7 @@ export default {
       menuItems: [
         { title: '웹툰', path: '/webtoons', icon: 'rainbow'},
         { title: '커뮤니티', path: '/community', icon: 'person-circle' },
-        { title: '포털', path: '/portal', icon: 'globe' },
+        { title: '게임', path: '/game', icon: 'rainbow' },
         { title: '뉴스', path: '/news', icon: 'newspaper'},
         { title: '쇼핑', path: '/shopping', icon: 'shop'}
       ]
