@@ -1,7 +1,7 @@
 const boardService = require('../services/boardService');
 
 class BoardController {
-  static boardNames = ['webtoons', 'community', 'portal', 'news', 'shopping'];
+  static boardNames = ['webtoons', 'community', 'game', 'news', 'shopping'];
 
   static async getData (req, res) {
     const boardName =  req.params.boardname;

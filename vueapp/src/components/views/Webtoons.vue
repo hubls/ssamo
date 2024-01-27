@@ -1,31 +1,32 @@
 <template>
   <div>
     <h1>웹툰 모음 페이지</h1>
-    <b-button @click="openModal">모달 열기</b-button>
-      <modal ref="modal">
-        <h2>안녕하세요.</h2>
-        <p>반갑습니다.</p>
-      </modal>
+    <UploadModal  ref="uploadModal" v-if="isUploadModalView" @close-modal="closeUploadModal" @open-modal="openUploadModal">
+    </UploadModal>
+
+<!--    <b-button @click="openUploadModal">등록</b-button>-->
+
     <div>
-      <Board :table-data = "webtoonsData" />
+      <Board :table-data="webtoonsData" />
     </div>
   </div>
 </template>
 
 <script>
 import Board from "../layout/Board.vue";
-import Modal from "../layout/Upload.vue";
+import UploadModal from "../layout/Upload.vue";
 import axios from "axios";
 
 export default {
   components: {
     Board,
-    Modal
+    UploadModal
   },
 
   data() {
     return {
-      webtoonsData: []
+      webtoonsData: [],
+      isUploadModalView: false
     }
   },
 
@@ -34,17 +35,23 @@ export default {
   },
 
   methods: {
-    openModal() {
-      this.$refs.modal.showModal = true;
-    },
-
     async getWebtoonsData() {
       try {
         const response = await axios.get("/api/board/webtoons");
-        this.webtoonsData = response.data; // API에서 받아온 데이터를 설정
+        this.webtoonsData = response.data;
       } catch (error) {
         console.error("Error getting webtoons data: ", error);
       }
+    },
+
+    openUploadModal() {
+      console.log(this.isUploadModalView);
+      this.isUploadModalView = true;
+    },
+
+    closeUploadModal() {
+      this.isUploadModalView = false;
+      this.$refs.uploadModal.resetWebtoonData();
     }
   }
 };
