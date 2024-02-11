@@ -6,6 +6,7 @@ import Community from "../components/views/Community.vue";
 import Game from "../components/views/Game.vue";
 import News from "../components/views/News.vue";
 import Shopping from "../components/views/Shopping.vue";
+import Login from "../components/views/Login.vue"
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ export default new VueRouter({
       path: '/shopping',
       name: 'Shopping',
       component: Shopping
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })

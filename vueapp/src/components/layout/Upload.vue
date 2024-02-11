@@ -13,16 +13,21 @@
           <b-input type="text" v-model="webtoonData.url" required />
           <br>
 
+          <label for="url">방문자수</label>
+          <b-input type="text" v-model="webtoonData.visitorCount" required />
+          <br>
+
           <label for="image">이미지 업로드</label>
-          <div>
-            <b-input type="file" ref="imageInput" @change="handleImageUpload" accept="image/*" required />
-          </div>
+          <input type="file" @change="handleImageUpload" accept="image/*" required />
           <div v-if="webtoonData.image">
             <img :src="webtoonData.image" alt="웹툰 이미지" style="max-width: 100%; max-height: 200px;" />
           </div>
+          <br>
 
-          <button type="button" @click="closeModal">닫기</button>
-          <button type="submit">등록</button>
+          <div class="button-group">
+            <b-button @click="closeModal">닫기</b-button>
+            <b-button type="submit">등록</b-button>
+          </div>
         </b-form>
       </div>
     </div>
@@ -36,6 +41,7 @@ export default {
       webtoonData: {
         name: '',
         url: '',
+        visitorCount: '',
         image: ''
       }
     };
@@ -54,8 +60,8 @@ export default {
       const file = event.target.files[0];
       if (file) {
         // Validate image size
-        if (file.size > 1024 * 1024) {
-          alert('이미지 크기는 1MB를 초과할 수 없습니다.');
+        if (file.size > 10 * 1024 * 1024) {
+          alert('이미지 크기는 10MB를 초과할 수 없습니다.');
           return;
         }
 
@@ -78,6 +84,7 @@ export default {
       this.webtoonData = {
         name: '',
         url: '',
+        visitorCount: '',
         image: ''
       };
     }
@@ -114,5 +121,21 @@ export default {
   max-height: 80%;
   overflow-y: auto;
   padding: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; /* 버튼과의 간격을 조정할 수 있습니다. */
+}
+
+/* 선택적으로 버튼 간격을 조정할 수 있습니다. */
+.button-group > * {
+  margin-right: 10px;
+}
+
+/* 마지막 버튼에는 오른쪽 여백을 주지 않습니다. */
+.button-group > *:last-child {
+  margin-right: 0;
 }
 </style>
