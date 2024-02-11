@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TrComponent from "./TrComponent";
+import TrComponent from "./TrComponent.vue";
 
 export default {
   props: {

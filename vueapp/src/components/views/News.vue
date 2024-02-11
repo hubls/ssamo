@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Board from "../layout/Board.vue";
+import Board from "../layout/table/Board.vue";
 import axios from "axios";
 
 export default {

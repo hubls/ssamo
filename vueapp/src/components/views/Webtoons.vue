@@ -4,7 +4,7 @@
     <UploadModal  ref="uploadModal" v-if="isUploadModalView" @close-modal="closeUploadModal" @open-modal="openUploadModal">
     </UploadModal>
 
-<!--    <b-button @click="openUploadModal">등록</b-button>-->
+    <b-button @click="openUploadModal">등록</b-button>
 
     <div>
       <Board :table-data="webtoonsData" />
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Board from "../layout/Board.vue";
+import Board from "../layout/table/Board.vue";
 import UploadModal from "../layout/Upload.vue";
 import axios from "axios";
 

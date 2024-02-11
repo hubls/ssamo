@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import Header from "@/components/layout/Header.vue";
-import LeftSide from "@/components/layout/LeftSide.vue";
-import RightSide from "@/components/layout/RightSide.vue";
+import Header from "@/components/layout/header/Header.vue";
+import LeftSide from "@/components/layout/side/LeftSide.vue";
+import RightSide from "@/components/layout/side/RightSide.vue";
 
 export default {
   name: 'App',

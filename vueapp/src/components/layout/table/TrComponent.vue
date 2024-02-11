@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TdComponent from './TdComponent';
+import TdComponent from './TdComponent.vue';
 
 export default {
   components: {
